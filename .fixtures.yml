@@ -3,4 +3,4 @@ fixtures:
     stdlib: "puppetlabs/stdlib"
     apt: "puppetlabs/apt"
   symlinks:
-    tinyproxy: "#{source_dir}"
+    h2o: "#{source_dir}"

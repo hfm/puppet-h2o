@@ -44,5 +44,11 @@
 #
 class h2o {
 
+  require h2o::repo
+  include h2o::install
+  include h2o::service
+
+  Class['h2o::install']
+  -> Class['h2o::service']
 
 }

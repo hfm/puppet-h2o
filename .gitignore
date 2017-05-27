@@ -1,6 +1,9 @@
 *.gem
 /pkg/
 /spec/reports/
+/spec/fixtures/
 /.bundle/
 /vendor/bundle
 Gemfile.lock
+/log/
+/junit/
