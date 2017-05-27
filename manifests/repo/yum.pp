@@ -1,4 +1,6 @@
-class h2o::repo::yum {
+class h2o::repo::yum (
+  String $ensure = $h2o::repo_ensure,
+) {
 
   $_osfamily = $facts['os']['name'] ? {
     'CentOS' => 'centos',
@@ -6,7 +8,7 @@ class h2o::repo::yum {
   }
 
   yumrepo { 'h2o':
-    ensure        => present,
+    ensure        => $ensure,
     descr         => 'bintray-tatsushid-h2o-rpm',
     baseurl       => "https://dl.bintray.com/tatsushid/h2o-rpm/${_osfamily}/\$releasever/\$basearch/",
     enabled       => 1,

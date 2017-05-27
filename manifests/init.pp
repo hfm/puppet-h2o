@@ -24,25 +24,12 @@
 #  global variables should be avoided in favor of class parameters as
 #  of Puppet 2.6.)
 #
-# Examples
-# --------
-#
-# @example
-#    class { 'h2o':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2017 Your name here, unless otherwise noted.
-#
-class h2o {
+class h2o (
+  String  $repo_ensure    = present,
+  String  $package_ensure = installed,
+  String  $service_ensure = running,
+  Boolean $service_enable = true,
+) {
 
   require h2o::repo
   include h2o::install

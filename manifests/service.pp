@@ -1,8 +1,11 @@
-class h2o::service {
+class h2o::service (
+  String $ensure = $h2o::service_ensure,
+  Boolean $enable = $h2o::service_enable,
+) {
 
   service { 'h2o':
-    ensure => running,
-    enable => true,
+    ensure => $ensure,
+    enable => $enable,
   }
 
 }

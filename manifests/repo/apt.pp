@@ -1,8 +1,11 @@
-class h2o::repo::apt {
+class h2o::repo::apt (
+  String $ensure = $h2o::repo_ensure,
+) {
 
   $_dist = $facts['os']['distro']['codename']
 
   apt::source { 'bintray-tatsushid-h2o':
+    ensure   => $ensure,
     location => 'http://dl.bintray.com/tatsushid/h2o-deb',
     repos    => 'main',
     release  => "${_dist}-backports",
