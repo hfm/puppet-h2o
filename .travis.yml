@@ -6,9 +6,9 @@ matrix:
     sudo: required
     services: docker
     env: BEAKER_set=centos7 BEAKER_debug=true
-    script: bundle exec rake all beaker
+    script: bundle exec rake test beaker
   - rvm: default
     sudo: required
     services: docker
     env: BEAKER_set=xenial BEAKER_debug=true
-    script: bundle exec rake all beaker
+    script: bundle exec rake test beaker
