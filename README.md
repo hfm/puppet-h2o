@@ -4,80 +4,112 @@
 
 1. [Description](#description)
 1. [Setup - The basics of getting started with h2o](#setup)
-    * [What h2o affects](#what-h2o-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with h2o](#beginning-with-h2o)
 1. [Usage - Configuration options and additional functionality](#usage)
+    - [Configuring](#configuring)
+    - [Configuring modules from Hiera](#configuring-modules-from-hiera)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+    - [Public Classes](#public-classes)
+    - [Private Classes](#private-classes)
+    - [Parameters](#parameters)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
+    - [Running tests](#running-tests)
+    - [Testing quickstart](#testing-quickstart)
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
-
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+The h2o module handles installing, configuring, and running [h2o](https://h2o.examp1e.net/).
 
 ## Setup
 
-### What h2o affects **OPTIONAL**
+### Setup Requirements
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+- [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib) (>= 4.0.0 < 5.0.0)
+- [puppetlabs-apt](https://forge.puppet.com/puppetlabs/apt) (>= 2.0.0 < 5.0.0)
 
 ### Beginning with h2o
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+To install the h2o with default parameters, declare the `h2o` class.
+
+```puppet
+include ::h2o
+```
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+### Configuring h2o
+
+```puppet
+class { 'h2o':
+  package_ensure => '2.2.2-1~ubuntu16.04.1',
+}
+```
+
+### Configuring modules from Hiera
+
+```yaml
+h2o::package_ensure: '2.2.2-1~ubuntu16.04.1'
+```
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+### Public Classes
+
+- [`h2o`](#h2o): Installs and runs h2o.
+
+### Private Classes
+
+- `h2o::install`: Installs the h2o package.
+- `h2o::repo`: Manages the h2o repository.
+- `h2o::repo::yum`: Manages the Yum repository.
+- `h2o::repo::apt`: Manages the Apt sources.
+- `h2o::service`: Manages service.
+
+### Parameters
+
+#### `h2o` class
+
+- `repo_ensure`: Specifies whether the h2o repository should exist. Type is the String. Default: 'present'.
+- `package_ensure`: What state the package should be in. Type is the String. Default: 'installed'.
+- `service_ensure`: Whether a service should be running. Type is the String. Default: 'running'.
+- `service_enable`: Whether a service should be enabled to start at boot. Type is the Boolean. Default: true.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+This module has been tested on:
+
+- RedHat Enterprise Linux 6, 7
+- CentOS 6, 7
+- Scientific Linux 6, 7
+- Fedora 22, 23, 24, 25
+- Debian 7, 8
+- Ubuntu 14.04, 16.04
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+### Running tests
 
-## Release Notes/Contributors/Etc. **Optional**
+The tinyproxy module contains tests for both [rspec-puppet](http://rspec-puppet.com/) (unit tests) and [beaker-rspec](https://github.com/puppetlabs/beaker-rspec) (acceptance tests) to verify functionality. For detailed information on using these tools, please see their respective documentation.
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+### Testing quickstart
+
+Unit tests:
+
+```console
+$ bundle install
+$ bundle exec rake test
+```
+
+Acceptance tests using docker:
+
+```console
+# List available beaker nodesets
+$ bundle exec rake beaker_nodes
+centos7
+xenial
+
+# Run beaker acceptance tests
+$ BEAKER_set=xenial bundle exec rake beaker
+```
