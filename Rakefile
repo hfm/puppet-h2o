@@ -8,7 +8,7 @@ begin
 rescue LoadError
 end
 
-PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp']
+PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp', 'vendor/**/*.pp']
 
 desc 'Validate manifests, templates, and ruby files'
 task :validate do
