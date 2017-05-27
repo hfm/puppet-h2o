@@ -1,4 +1,4 @@
-# h2o
+# h2o [![Build Status](https://travis-ci.org/hfm/puppet-h2o.svg?branch=master)](https://travis-ci.org/hfm/puppet-h2o) [![Puppet Forge](https://img.shields.io/puppetforge/v/hfm/h2o.svg?style=flat-square)](https://forge.puppet.com/hfm/h2o)
 
 #### Table of Contents
 
