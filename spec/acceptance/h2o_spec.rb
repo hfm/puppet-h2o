@@ -35,7 +35,7 @@ describe 'h2o class' do
 
   [80, 443].each do |num|
     describe port(num) do
-      it { should be_listening.on('0.0.0.0').with('tcp') }
+      it { should be_listening.on('0.0.0.0') }
     end
   end
 end

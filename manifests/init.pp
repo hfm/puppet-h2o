@@ -48,7 +48,8 @@ class h2o {
   include h2o::install
   include h2o::service
 
-  Class['h2o::install']
+  Class['h2o::repo']
+  -> Class['h2o::install']
   -> Class['h2o::service']
 
 }

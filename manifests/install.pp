@@ -4,4 +4,11 @@ class h2o::install {
     ensure => installed,
   }
 
+  file { '/var/run/h2o':
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+  }
+
 }

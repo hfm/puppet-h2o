@@ -10,7 +10,10 @@ describe 'h2o' do
       {
         os: {
           family: 'Debian',
-          name: 'Ubuntu'
+          name: 'Ubuntu',
+          distro: {
+            codename: 'xenial'
+          }
         },
         osfamily: 'Debian'
       }
