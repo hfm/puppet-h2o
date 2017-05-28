@@ -1,5 +1,5 @@
 class h2o::service (
-  String $ensure = $h2o::service_ensure,
+  String  $ensure = $h2o::service_ensure,
   Boolean $enable = $h2o::service_enable,
 ) {
 

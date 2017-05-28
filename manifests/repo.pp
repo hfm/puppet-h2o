@@ -1,7 +1,3 @@
-# Class: h2o::repo
-# ===========================
-#
-# h2o::repo is to setup repository.
 class h2o::repo {
 
   case $facts['os']['family'] {
