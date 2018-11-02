@@ -1,5 +1,8 @@
 language: ruby
 cache: bundler
+env:
+  global:
+    - PUPPET_VERSION='~> 5.0'
 matrix:
   include:
   - rvm: default
