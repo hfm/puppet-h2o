@@ -13,6 +13,9 @@ describe 'h2o' do
           name: 'Ubuntu',
           distro: {
             codename: 'xenial'
+          },
+          release: {
+            full: '18.04'
           }
         },
         osfamily: 'Debian'

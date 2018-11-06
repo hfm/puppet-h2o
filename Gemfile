@@ -12,4 +12,5 @@ gem 'rubocop'
 
 gem 'puppet-blacksmith', group: :development
 
+gem 'beaker', '~> 3.0', group: :system_tests
 gem 'beaker-rspec', group: :system_tests
