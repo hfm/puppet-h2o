@@ -7,18 +7,6 @@
   "source": "https://github.com/hfm/puppet-h2o",
   "project_page": "https://github.com/hfm/puppet-h2o",
   "issues_url": "https://github.com/hfm/puppet-h2o/issues",
-  "tags": [
-    "h2o",
-    "http/https server",
-    "web server",
-    "http2"
-  ],
-  "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": ">= 4.0.0 < 6.0.0"
-    }
-  ],
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -75,5 +63,19 @@
       ]
     }
   ],
-  "data_provider": null
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0 < 6.0.0"
+    }
+  ],
+  "tags": [
+    "h2o",
+    "http/https server",
+    "web server",
+    "http2"
+  ],
+  "pdk-version": "1.7.0",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.7.0-0-g57412ed"
 }
