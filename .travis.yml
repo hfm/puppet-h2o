@@ -29,12 +29,10 @@ matrix:
       rvm: 2.1.9
     - sudo: required
       services: docker
-      env: BEAKER_set=centos7 BEAKER_debug=true
-      script: bundle exec rake test beaker
+      env: CHECK=beaker BEAKER_set=centos7 BEAKER_debug=true
     - sudo: required
       services: docker
-      env: BEAKER_set=xenial BEAKER_debug=true
-      script: bundle exec rake test beaker
+      env: CHECK=beaker BEAKER_set=xenial BEAKER_debug=true
 branches:
   only:
     - master
